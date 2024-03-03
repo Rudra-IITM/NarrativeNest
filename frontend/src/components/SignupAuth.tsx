@@ -4,7 +4,6 @@ import { SignUpInput } from '@rudra_iitm/web-blog'
 import { useState } from 'react'
 import Button from './Button'
 import axios from 'axios'
-import { BACKEND_URL } from '../config'
 
 const SignupAuth = () => {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const SignupAuth = () => {
 
   const signup = async () => {
     try {
-      const { data } = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, postInfo)
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URI}/api/v1/user/signup`, postInfo)
       localStorage.setItem('token', data)
       navigate('/blogs')
     } catch (err) {

@@ -7,7 +7,7 @@ const Appbar = () => {
     <div className='flex justify-between border-b px-10 py-4 items-center'>
         <Link to='/blogs'>
             <div className='text-md font-semibold cursor-pointer'>
-                Web Blog
+                Narrative Nest
             </div>
         </Link>
         <div>
