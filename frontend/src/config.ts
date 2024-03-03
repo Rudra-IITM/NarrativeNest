@@ -1,0 +1,1 @@
+export const BACKEND_URL = 'https://web-blog.singhrudra5556.workers.dev';

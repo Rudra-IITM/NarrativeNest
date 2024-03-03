@@ -6,12 +6,12 @@ import { authMiddleware } from './middlewares/auth.middlewares'
 
 const app = new Hono()
 
+app.use('/api/v1/*', cors());
+app.use('/api/v1/blog', authMiddleware);
+
 app.route('/', userRouter)
 app.route('/', blogRouter)
 
 app.route('/api/v1', app)
-
-app.use('/api/v1/blog/', authMiddleware);
-app.use('/api/v1/*', cors());
 
 export default app

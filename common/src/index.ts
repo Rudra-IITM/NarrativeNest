@@ -3,7 +3,6 @@ import z from 'zod';
 export const signInSchema = z.object({
     email: z.string().email(),
     password: z.string().min(6),
-    name: z.string().min(3).optional(),
 });
 
 export type SignInInput = z.infer<typeof signInSchema>
@@ -11,6 +10,7 @@ export type SignInInput = z.infer<typeof signInSchema>
 export const signUpSchema = z.object({
     email: z.string().email(),
     password: z.string().min(6),
+    name: z.string().min(3).optional(),
 });
 
 export type SignUpInput = z.infer<typeof signUpSchema>

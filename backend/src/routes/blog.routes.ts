@@ -80,7 +80,20 @@ router.get('/bulk', async (c) => {
     }).$extends(withAccelerate())
 
     try {
-        const post = await prisma.post.findMany({})
+        const post = await prisma.post.findMany({
+            select: {
+                title: true,
+                content: true,
+                id: true,
+                author: {
+                    select: {
+                        name: true
+                    }
+                },
+                published: true,
+                createdAt: true
+            }
+        })
 
         c.status(200);
         return c.json(post);
@@ -99,6 +112,18 @@ router.get('/:id', async (c) => {
        const post = await prisma.post.findUnique({
         where: {
             id: c.req.param('id')
+        },
+        select: {
+            title: true,
+            content: true,
+            id: true,
+            author: {
+                select: {
+                    name: true
+                }
+            },
+            published: true,
+            createdAt: true
         }
     })
 

@@ -11,7 +11,7 @@ const authMiddleware = async (c: Context, next: Next) => {
 
     try {
         const payload = await verify(token, c.env.JWT_SECRET);
-        c.set('jwtPayload', payload);
+        c.set('jwtPayload', payload); 
         await next();
     } catch (err) {
         c.status(401)
