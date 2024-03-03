@@ -3,12 +3,18 @@ import axios from 'axios'
 import Appbar from '../components/Appbar'
 import { ChangeEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { getToken } from '../utils/getToken'
 
 const NewBlog = () => {
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const navigate = useNavigate();
+    const token = getToken();
+
+    if (!token) {
+        navigate('/signin')
+    }
 
     const postBlog = async () => {
         try {
